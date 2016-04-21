@@ -1,4 +1,4 @@
-<?php namespace toufee\Subscription\Contracts;
+<?php namespace Userdesk\Subscription\Contracts;
 
 use Illuminate\Http\Request;
 
@@ -7,8 +7,8 @@ interface Service{
 	 * Create Redirect response to complete cart.
 	 *
 	 * @param int $id
-	 * @param \toufee\Subscription\Contracts\Product $product
-	 * @param \toufee\Subscription\Contracts\Consumer $consumer
+	 * @param \Userdesk\Subscription\Contracts\Product $product
+	 * @param \Userdesk\Subscription\Contracts\Consumer $consumer
 	 * @return \Symfony\Component\HttpFoundation\Response|null
 	 */
 	public function complete(int $id, Product $product, Consumer $consumer);
@@ -17,7 +17,7 @@ interface Service{
 	 * Handle IPN data.
 	 *
 	 * @param array $input
-	 * @return \toufee\Subscription\Class\TransactionResult|null
+	 * @return \Userdesk\Subscription\Class\TransactionResult|null
 	 */
 	public function ipn(array $input);
 
@@ -25,7 +25,7 @@ interface Service{
 	 * Handle PDT data.
 	 *
 	 * @param array $input
-	 * @return \toufee\Subscription\Class\TransactionResult|null
+	 * @return \Userdesk\Subscription\Class\TransactionResult|null
 	 */
 	public function pdt(array $input);
 }

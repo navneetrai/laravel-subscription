@@ -1,5 +1,5 @@
-<?php namespace toufee\Subscription;
-use toufee\Subscription\Exceptions\SubscriptionException;
+<?php namespace Userdesk\Subscription;
+use Userdesk\Subscription\Exceptions\SubscriptionException;
 use Config;
 
 class SubscriptionFactory{
@@ -10,7 +10,7 @@ class SubscriptionFactory{
     protected $serviceClassMap = array();
 
     public function __construct(){
-        $this->registerService('2checkout', 'toufee\\Subscription\\Services\\TwoCheckout');
+        $this->registerService('2checkout', 'Userdesk\\Subscription\\Services\\TwoCheckout');
     }
 
     /**
@@ -20,7 +20,7 @@ class SubscriptionFactory{
      *
      * @param string                $serviceName Name of service to create
      *
-     * @return \toufee\Subscription\Contracts\Service
+     * @return \Userdesk\Subscription\Contracts\Service
      */
 	public function createService($serviceName){        
         $config = Config::get(sprintf("subscription.services.%s", $serviceName));
@@ -48,7 +48,7 @@ class SubscriptionFactory{
         }
         $reflClass = new \ReflectionClass($className);
         
-        if ($reflClass->implementsInterface('toufee\\Subscription\\Contracts\\Service')) {
+        if ($reflClass->implementsInterface('Userdesk\\Subscription\\Contracts\\Service')) {
             $this->serviceClassMap[ucfirst($serviceName)] = $className;
             return $this;
         }
@@ -68,7 +68,7 @@ class SubscriptionFactory{
         if (isset($this->serviceClassMap[$serviceName])) {
             return $this->serviceClassMap[$serviceName];
         }
-        return '\\toufee\\Subscription\\Services\\' . $serviceName;
+        return '\\Userdesk\\Subscription\\Services\\' . $serviceName;
     }
 
     /**

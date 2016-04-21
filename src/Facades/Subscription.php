@@ -1,4 +1,4 @@
-<?php namespace toufee\Subscription\Facades;
+<?php namespace Userdesk\Subscription\Facades;
 use Illuminate\Support\Facades\Facade;
 
 class Subscription extends Facade {

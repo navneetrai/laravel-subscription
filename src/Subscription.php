@@ -1,4 +1,4 @@
-<?php namespace toufee\Subscription;
+<?php namespace Userdesk\Subscription;
 
 class Subscription{
 	/**
@@ -22,7 +22,7 @@ class Subscription{
 	/**
      * @param  string $service
      *
-     * @return \toufee\Subscription\Contracts\Service
+     * @return \Userdesk\Subscription\Contracts\Service
      */
 
 	public function processor($service){

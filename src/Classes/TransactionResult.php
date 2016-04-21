@@ -1,4 +1,4 @@
-<?php namespace toufee\Subscription\Classes;
+<?php namespace Userdesk\Subscription\Classes;
 
 class TransactionResult {
 

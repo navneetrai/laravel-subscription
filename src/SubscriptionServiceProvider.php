@@ -1,4 +1,4 @@
-<?php namespace toufee\Subscription;
+<?php namespace Userdesk\Subscription;
 
 use Illuminate\Support\ServiceProvider;
 

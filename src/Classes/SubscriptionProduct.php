@@ -1,6 +1,6 @@
-<?php namespace toufee\Subscription\Classes;
+<?php namespace Userdesk\Subscription\Classes;
 
-use toufee\Subscription\Contracts\Product as SubscriptionProductContract;
+use Userdesk\Subscription\Contracts\Product as SubscriptionProductContract;
 
 class SubscriptionProduct implements SubscriptionProductContract {
 

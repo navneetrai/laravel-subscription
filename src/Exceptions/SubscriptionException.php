@@ -1,4 +1,4 @@
-<?php namespace toufee\Subscription\Exceptions;
+<?php namespace Userdesk\Subscription\Exceptions;
 
 use Exception;
 

@@ -1,11 +1,11 @@
-<?php namespace toufee\Subscription\Services;
+<?php namespace Userdesk\Subscription\Services;
 
-use toufee\Subscription\Classes\TransactionResult;
-use toufee\Subscription\Exceptions\TransactionException;
+use Userdesk\Subscription\Classes\TransactionResult;
+use Userdesk\Subscription\Exceptions\TransactionException;
 
-use toufee\Subscription\Contracts\Product as SubscriptionProductContract;
-use toufee\Subscription\Contracts\Consumer as SubscriptionConsumerContract;
-use toufee\Subscription\Contracts\Service as ProcessorContract;
+use Userdesk\Subscription\Contracts\Product as SubscriptionProductContract;
+use Userdesk\Subscription\Contracts\Consumer as SubscriptionConsumerContract;
+use Userdesk\Subscription\Contracts\Service as ProcessorContract;
 
 class Paypal implements ProcessorContract{
 	private $config = [];
@@ -18,8 +18,8 @@ class Paypal implements ProcessorContract{
 	 * Create Redirect response to complete cart.
 	 *
 	 * @param int $id
-	 * @param \toufee\Subscription\Contracts\Product $product
-	 * @param \toufee\Subscription\Contracts\Consumer $consumer
+	 * @param \Userdesk\Subscription\Contracts\Product $product
+	 * @param \Userdesk\Subscription\Contracts\Consumer $consumer
 	 * @return \Illuminate\Http\Response|null
 	 */
 	public function complete(int $id, SubscriptionProductContract $product, SubscriptionConsumerContract $consumer = null){
@@ -70,7 +70,7 @@ class Paypal implements ProcessorContract{
 	 * Handle IPN data.
 	 *
 	 * @param array $input
-	 * @return \toufee\Subscription\Class\TransactionResult|null
+	 * @return \Userdesk\Subscription\Class\TransactionResult|null
 	 */
 	public function ipn(array $input){
 		$item_number	= array_get($input, 'item_number');
@@ -110,7 +110,7 @@ class Paypal implements ProcessorContract{
 	 * Handle PDT data.
 	 *
 	 * @param array $input
-	 * @return \toufee\Subscription\Class\TransactionResult|null
+	 * @return \Userdesk\Subscription\Class\TransactionResult|null
 	 */
 	public function pdt(array $input){
 		$req		 = 'cmd=_notify-synch';

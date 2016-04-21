@@ -1,4 +1,4 @@
-<?php namespace toufee\Subscription\Contracts;
+<?php namespace Userdesk\Subscription\Contracts;
 
 interface Product{
 	/**
