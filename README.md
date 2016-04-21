@@ -57,7 +57,7 @@ Add an alias within the ```aliases``` array found in ```config/app.php```:
 'aliases' => [
   // ...
   
-  'Subscription'     => Userdesk\Subscription\Facades\Userdesk\Subscription::class,
+  'Subscription'     => Userdesk\Subscription\Facades\Subscription::class,
 ]
 ```
 
