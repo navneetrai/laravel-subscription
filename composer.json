@@ -22,7 +22,7 @@
     "autoload": {
         "psr-4": {
             "Userdesk\\Subscription\\": "src/",
-            "Userdesk\\Tests\\Subscription\\": "tests/",
+            "Userdesk\\Tests\\Subscription\\": "tests/"
         }
     },
     "minimum-stability": "dev"
