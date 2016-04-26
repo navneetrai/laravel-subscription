@@ -10,7 +10,21 @@ class SubscriptionFactory{
     protected $serviceClassMap = array();
 
     public function __construct(){
-        $this->registerService('2checkout', 'Userdesk\\Subscription\\Services\\TwoCheckout');
+        $this->registerServiceAlias('TwoCheckout', '2checkout');
+    }
+
+    /**
+     * Builds and returns payment services
+     *
+     * It will first try to build an payment service
+     *
+     * @param string                $serviceName Name of service to create
+     *
+     * @return \Userdesk\Subscription\Contracts\Service
+     */
+
+    public function registerServiceAlias($serviceName, $alias){
+        $this->registerService($alias, 'Userdesk\\Subscription\\Services\\'.$serviceName);
     }
 
     /**
@@ -24,6 +38,11 @@ class SubscriptionFactory{
      */
 	public function createService($serviceName){        
         $config = Config::get(sprintf("subscription.services.%s", $serviceName));
+
+        if(empty($config)){
+            throw new SubscriptionException(sprintf('No Config exists for Service %s.', $serviceName));
+        }
+
 		$fullyQualifiedServiceName = $this->getFullyQualifiedServiceName($serviceName);
         if (class_exists($fullyQualifiedServiceName)) {
             return $this->buildService($fullyQualifiedServiceName, $config);
