@@ -139,6 +139,6 @@ class TwoCheckout implements ProcessorContract{
 	 * @return \Userdesk\Subscription\Class\ProcessorInfo|null
 	 */
 	public function info(){
-		return new ProcessorInfo('2Checkout', '/vendor/laravel-subscription/logo/2checkout.png', 'https://www.2checkout.com')
+		return new ProcessorInfo('2Checkout', '/vendor/laravel-subscription/logo/2checkout.png', 'https://www.2checkout.com');
 	}
 }

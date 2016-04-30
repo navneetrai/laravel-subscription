@@ -181,7 +181,7 @@ class Paypal implements ProcessorContract{
 	 * @return \Userdesk\Subscription\Class\ProcessorInfo|null
 	 */
 	public function info(){
-		return new ProcessorInfo('Paypal', '/vendor/laravel-subscription/logo/paypal.png', 'https://www.paypal.com')
+		return new ProcessorInfo('Paypal', '/vendor/laravel-subscription/logo/paypal.png', 'https://www.paypal.com');
 	}
 
 	private function getRecurrenceString($recur){

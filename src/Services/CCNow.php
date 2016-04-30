@@ -112,6 +112,6 @@ class CCNow implements ProcessorContract{
 	 * @return \Userdesk\Subscription\Class\ProcessorInfo|null
 	 */
 	public function info(){
-		return new ProcessorInfo('CCNow', '/vendor/laravel-subscription/logo/ccnow.png', 'http://www.ccnow.com')
+		return new ProcessorInfo('CCNow', '/vendor/laravel-subscription/logo/ccnow.png', 'http://www.ccnow.com');
 	}
 }
