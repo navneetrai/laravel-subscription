@@ -94,9 +94,17 @@ return [
   |--------------------------------------------------------------------------
   */
 
-  /**
-   * Consumers
-   */
+  /*
+  |--------------------------------------------------------------------------
+  | Subscription Services
+  |--------------------------------------------------------------------------
+  |
+  | This file is for storing the credentials for subscription services such
+  | as Paypal, CCNow, 2Checkout, and others. This file provides a sane
+  | default location for this type of information, allowing packages
+  | to have a conventional place to find your various credentials.
+  |
+  */
   'services' => [
     'paypal'=>[
       'email'=>'', 
@@ -120,4 +128,102 @@ Just follow the steps below and you will be able to get a processor:
 
 ```php
 $paypal = Subscription::processor('Paypal');
+```
+
+#### Getting Processor Informationation
+
+You can get basic Information for any processor by:
+
+```php
+$processor = Subscription::processor($proc);
+
+$info = $processor->info();
+```
+
+The value returned is a ``ProcessorInfo`` object. You can call ``getName``, ``getLogo`` and ``getUrl`` methods on this processor to display Processor Name, Logo and Website Url for display purposes.
+
+For ``getLogo`` method to work correctly you'll need to copy package assets to your project using
+
+```
+$ php artisan vendor:publish --provider="Userdesk\Subscription\SubscriptionServiceProvider"
+```
+
+#### Completing Subscription
+
+Once you have the processor object you can call:
+
+```php
+$processor = Subscription::processor($proc);
+
+$processor->complete($id, $product, $consumer);
+```
+
+Complete method redirects to source processor so that your user can complete his payment.
+
+``$id`` is your unique Order ID. ``$product`` and ``$consumer`` are objects implementing ``SubscriptionProductContract`` and ``SubscriptionConsumerContract`` respectively.
+
+A basic implementation of ``SubscriptionProductContract`` and ``SubscriptionConsumerContract`` are included with source in form of ``Classes\SubscriptionProduct`` and ``Classes\SubscriptionConsumer`` respectively.
+
+#### Handling Processor Notifications
+
+You can handle Processor Notifications and Processor Cart Return Data by forwarding them to ``ipn`` and ``pdt`` functions respectively. 
+
+Both these function excpects only one input with request data as array and returns ``TransactionResult`` object.
+
+```php
+public function cartComplete(Request $request, $proc){
+	$processor = Subscription::processor($proc);
+	try{
+		$result = $processor->pdt($request->all());
+	}catch(TransactionException $exception){
+		Log::error($exception->getMessage(), $exception->getData());	
+	}
+	
+	if(!empty($result)){
+		$cartId = $result->getId();
+	  	if(!empty($cartId)){
+	  		$action = $result->getAction();    
+			if($action=='signup'){
+				//Handle successful Signup
+			}
+		}else{
+			Log::error('Cart Not Found For PDT', ['proc'=>$proc, 'data'=>$request->all()]);	
+		}
+	}
+}
+```
+
+```php
+public function handleIpn(Request $request, $proc){
+	$processor = Subscription::processor($proc);
+	try{
+	  	$result = $processor->ipn($request->all());
+	}catch(Userdesk\Subscription\Exceptions\TransactionException $exception){
+	  	//Handle Exceptions
+	  	Log::error($exception->getMessage(), $exception->getData());  
+	}
+
+	if(!empty($result)){
+	  	$cartId = $result->getId();
+	  	if(!empty($cartId)){
+		    $action = $result->getAction();        
+
+		    if($action=='signup'){
+		      //Handle Signup Code
+		    }else if($action=='payment'){          
+		      $transactionId = $result->getIdent();
+		      $amount = $result->getAmount();
+		      //Handle successful payments
+		    }else if($action=='refund'){          
+		      $transactionId = $result->getIdent();
+		      $amount = $result->getAmount();
+		      //Handle refunds
+		    }else if($action=='cancel'){
+		      //Handle cancellations;
+		    }
+		}else{
+		    Log::error('Cart Not Found For IPN', ['proc'=>$proc, 'data'=>$request->all()]); 
+		}
+	}   
+}
 ```
