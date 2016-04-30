@@ -35,7 +35,7 @@ Add laravel-subscription to your composer.json file:
 
 ```
 "require": {
-  "navneetrai/laravel-subscription": "dev-master"
+  "navneetrai/laravel-subscription": "^1.0"
 }
 ```
 
