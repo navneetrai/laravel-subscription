@@ -1,6 +1,7 @@
 <?php namespace Userdesk\Subscription\Services;
 
 use Userdesk\Subscription\Classes\TransactionResult;
+use Userdesk\Subscription\Classes\ProcessorInfo;
 use Userdesk\Subscription\Exceptions\TransactionException;
 
 use Userdesk\Subscription\Contracts\Product as SubscriptionProductContract;
@@ -103,5 +104,14 @@ class CCNow implements ProcessorContract{
 		$payment_amount	 = array_get($input, 'amount');
 
 		return new TransactionResult($item_number, $subscr_id, $payment_amount, 'Pass', 'signup', $input);
+	}
+
+	/**
+	 * Return Processor Info.
+	 *
+	 * @return \Userdesk\Subscription\Class\ProcessorInfo|null
+	 */
+	public function info(){
+		return new ProcessorInfo('CCNow', '/vendor/laravel-subscription/logo/ccnow.png', 'http://www.ccnow.com')
 	}
 }

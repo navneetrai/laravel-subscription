@@ -28,4 +28,11 @@ interface Service{
 	 * @return \Userdesk\Subscription\Class\TransactionResult|null
 	 */
 	public function pdt(array $input);
+
+	/**
+	 * Return Processor Info.
+	 *
+	 * @return \Userdesk\Subscription\Class\ProcessorInfo|null
+	 */
+	public function info();
 }

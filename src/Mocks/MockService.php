@@ -34,7 +34,7 @@ class MockService implements ProcessorContract{
 	 * @return \Userdesk\Subscription\Class\TransactionResult|null
 	 */
 	public function ipn(array $input){
-		$item_number	= str_random(12)
+		$item_number	= str_random(12);
 		$txn_id			= str_random(12);
 
 		$action = 'test';

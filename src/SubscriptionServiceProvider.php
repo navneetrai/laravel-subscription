@@ -11,7 +11,13 @@ class SubscriptionServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		//
+		$this->publishes([
+	        __DIR__.'/Assets' => public_path('vendor/laravel-subscription'),
+	    ], 'public');
+
+	    $this->publishes([
+	        __DIR__.'/Config/subscription.php' => config_path('subscription.php'),
+	    ], 'config');
 	}
 
 	/**

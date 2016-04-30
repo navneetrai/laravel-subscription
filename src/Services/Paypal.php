@@ -1,6 +1,7 @@
 <?php namespace Userdesk\Subscription\Services;
 
 use Userdesk\Subscription\Classes\TransactionResult;
+use Userdesk\Subscription\Classes\ProcessorInfo;
 use Userdesk\Subscription\Exceptions\TransactionException;
 
 use Userdesk\Subscription\Contracts\Product as SubscriptionProductContract;
@@ -172,6 +173,15 @@ class Paypal implements ProcessorContract{
 				throw new TransactionException("Paypal check failed", ['lines'=>$lines, 'keys'=>$keys]);
 			}
 		}		
+	}
+
+	/**
+	 * Return Processor Info.
+	 *
+	 * @return \Userdesk\Subscription\Class\ProcessorInfo|null
+	 */
+	public function info(){
+		return new ProcessorInfo('Paypal', '/vendor/laravel-subscription/logo/paypal.png', 'https://www.paypal.com')
 	}
 
 	private function getRecurrenceString($recur){

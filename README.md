@@ -1,10 +1,11 @@
 # Subscription Billing for Laravel 5
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+[![Build Status](https://travis-ci.org/navneetrai/laravel-subscription.svg)](https://travis-ci.org/navneetrai/laravel-subscription)
+[![Coverage Status](https://coveralls.io/repos/navneetrai/laravel-subscription/badge.svg)](https://coveralls.io/r/navneetrai/laravel-subscription)
+[![Total Downloads](https://poser.pugx.org/navneetrai/laravel-subscription/downloads.svg)](https://packagist.org/packages/navneetrai/laravel-subscription)
+[![Latest Stable Version](https://poser.pugx.org/navneetrai/laravel-subscription/v/stable.svg)](https://packagist.org/packages/navneetrai/laravel-subscription)
+[![Latest Unstable Version](https://poser.pugx.org/navneetrai/laravel-subscription/v/unstable.svg)](https://packagist.org/packages/navneetrai/laravel-subscription)
+[![License](https://poser.pugx.org/navneetrai/laravel-subscription/license.svg)](https://packagist.org/packages/navneetrai/laravel-subscription)
 
 laravel-subscription is a simple laravel 5 library for creating subscription billing and handling server notifications.
 

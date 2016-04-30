@@ -1,6 +1,7 @@
 <?php namespace Userdesk\Subscription\Services;
 
 use Userdesk\Subscription\Classes\TransactionResult;
+use Userdesk\Subscription\Classes\ProcessorInfo;
 use Userdesk\Subscription\Exceptions\TransactionException;
 
 use Userdesk\Subscription\Contracts\Product as SubscriptionProductContract;
@@ -130,5 +131,14 @@ class TwoCheckout implements ProcessorContract{
 		}
 
 		return new TransactionResult($item_number, $subscr_id, $payment_amount, $status, $action, $keys->get());		
+	}
+
+	/**
+	 * Return Processor Info.
+	 *
+	 * @return \Userdesk\Subscription\Class\ProcessorInfo|null
+	 */
+	public function info(){
+		return new ProcessorInfo('2Checkout', '/vendor/laravel-subscription/logo/2checkout.png', 'https://www.2checkout.com')
 	}
 }
