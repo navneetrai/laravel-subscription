@@ -12,8 +12,8 @@ php:
 #    - master
 
 before_script:
-  - travis_retry composer self-update
-  - travis_retry composer install --no-interaction --prefer-source
+  - composer self-update
+  - composer install
 
 script:
   - ./vendor/bin/phpunit
