@@ -1,6 +1,7 @@
 <?php namespace Userdesk\Subscription\Mocks;
 
 use Userdesk\Subscription\Classes\TransactionResult;
+use Userdesk\Subscription\Classes\ProcessorInfo;
 use Userdesk\Subscription\Exceptions\TransactionException;
 
 use Userdesk\Subscription\Contracts\Product as SubscriptionProductContract;
@@ -61,5 +62,14 @@ class MockService implements ProcessorContract{
 
 		return new TransactionResult($item_number, $subscr_id, 0, $payment_status, $action, $keys->get());		
 			
+	}
+
+	/**
+	 * Return Processor Info.
+	 *
+	 * @return \Userdesk\Subscription\Classes\ProcessorInfo|null
+	 */
+	public function info(){
+		new ProcessorInfo('Mock', '/vendor/laravel-subscription/logo/mock.png', 'http://www.example.com');
 	}
 }

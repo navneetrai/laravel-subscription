@@ -7,7 +7,9 @@
 [![Latest Unstable Version](https://poser.pugx.org/navneetrai/laravel-subscription/v/unstable.svg)](https://packagist.org/packages/navneetrai/laravel-subscription)
 [![License](https://poser.pugx.org/navneetrai/laravel-subscription/license.svg)](https://packagist.org/packages/navneetrai/laravel-subscription)
 
-laravel-subscription is a simple laravel 5 library for creating subscription billing and handling server notifications.
+laravel-subscription is a simple laravel 5 library for creating subscription billing and handling server notifications. It is primarily meant for people outside countries like US, UK and Canada where [Stripe](https://stripe.com/), [Paypal Payments Pro](https://www.paypal.com/webapps/mpp/paypal-payments-pro) are not available.
+
+If you want to handle non-recurring payments, you can use [Omnipay](http://omnipay.thephpleague.com/) for one-time payments and token billing.
 
 ---
  

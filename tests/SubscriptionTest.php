@@ -1,4 +1,4 @@
-<?php
+<?php namespace Userdesk\Tests\Subscription;
 
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -7,7 +7,10 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Userdesk\Subscription\Subscription;
 use Userdesk\Subscription\SubscriptionFactory;
 
-class SubscriptionTest extends Orchestra\Testbench\TestCase
+use Config;
+use Mockery;
+
+class SubscriptionTest extends \Orchestra\Testbench\TestCase
 {
 
     public function tearDown()
@@ -28,6 +31,9 @@ class SubscriptionTest extends Orchestra\Testbench\TestCase
         );
     }
 
+    /**
+     * @covers Userdesk\Subscription\Subscription::processor
+     */
     public function testCreateProcessor()
     {
         Config::set('subscription.services.paypal.email', 'test@best.com');
