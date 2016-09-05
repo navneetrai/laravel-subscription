@@ -46,7 +46,8 @@ class Paypal implements ProcessorContract{
 				'cmd'=>'_xclick-subscriptions', 
 				'a3'=>$product->getPrice(), 
 				'p3'=>$product->getFrequency(), 
-				't3'=>$recur
+				't3'=>$recur,
+				'src'=>1
 			]);
 
 			if($product->getDiscount() > 0){
