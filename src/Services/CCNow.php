@@ -28,6 +28,9 @@ class CCNow implements ProcessorContract{
 		$key   = array_get($this->config, 'key');
 		$hash  = md5(sprintf("%s^x_login^x_fp_arg_list^x_fp_sequence^x_amount^x_currency_code^%s^%s^USD^%s", $login, $id, $product->getPrice(), $key));
 
+		$frequency = $product->getFrequency();
+		$recurrence = $product->getRecurrence();
+
 		$params = [
 			'x_version'=>'1.0',
 			'x_fp_arg_list'=>'x_login^x_fp_arg_list^x_fp_sequence^x_amount^x_currency_code',
@@ -53,7 +56,7 @@ class CCNow implements ProcessorContract{
 			'x_product_unitprice_1'=>$product->getPrice(),
 			'x_product_url_1'=>array_get($this->config, 'url'),
 			'x_amount'=>$product->getPrice(),
-			'x_subscription_freq'=>($product->getFrequency()=='month') ? '1M' : (($product->getFrequency()=='year')?'1Y':''),
+			'x_subscription_freq'=>($recurrence=='month') ? sprintf('%sM', $frequency) : (($recurrence=='year') ? sprintf('%sY', $frequency):''),
 			'x_fp_hash'=>$hash
 		];
 
