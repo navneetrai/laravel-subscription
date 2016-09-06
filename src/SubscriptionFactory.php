@@ -11,6 +11,7 @@ class SubscriptionFactory{
 
     public function __construct(){
         $this->registerServiceAlias('TwoCheckout', '2checkout');
+        $this->registerServiceAlias('CCNow', 'ccnow');
     }
 
     /**
