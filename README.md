@@ -110,7 +110,8 @@ return [
   'services' => [
     'paypal'=>[
       'email'=>'', 
-      'logo'=>''
+      'logo'=>'',
+      'auth'=>''
     ],
   ]
 

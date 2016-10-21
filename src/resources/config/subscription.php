@@ -15,19 +15,20 @@ return [
 	*/
 	'services' => [
 		'ccnow'=>[
-			'login'=>'articlevideo', 
-			'key'=>'49qzy5bnywk3udpir6ywwcd4p5q52uxx',
-			'url'=>env('APP_URL', 'https://www.toufee.com')
+			'login'=>'', 
+			'key'=>'',
+			'url'=>env('APP_URL', '')
 		],
 
 		'2checkout'=>[
-			'sid'=>'409877',
-			'secret'=>'sanchit123'
+			'sid'=>'',
+			'secret'=>''
 		],
 		
 		'paypal'=>[
-			'email'=>'paypal@toufee.com', 
-			'logo'=>''
+			'email'=>'', 
+			'logo'=>'',
+			'auth'=>''
 		],
 	]
 
