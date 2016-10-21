@@ -157,7 +157,7 @@ class Paypal implements ProcessorContract{
 			if (strcmp ($lines[0], "SUCCESS") == 0) {				 
 				for ($i = 1; $i < count ($lines); $i++) {
 					@list ($key, $val) = explode ("=", $lines[$i]);
-					$keys->put(urldecode($key), urldecode ($val));
+					$keys->put(urldecode($key), urldecode($val));
 				}
 
 				$item_number	  = $keys->get('item_number');
@@ -175,7 +175,7 @@ class Paypal implements ProcessorContract{
 					$action = 'signup';					
 				}
 
-				return new TransactionResult($item_number, $subscr_id, 0, $payment_status, $action, $keys->get());
+				return new TransactionResult($item_number, $subscr_id, 0, $payment_status, $action, $keys->all());
 			} elseif (strcmp ($lines[0], "FAIL") == 0) {	
 				throw new TransactionException("Paypal check failed");
 			}
