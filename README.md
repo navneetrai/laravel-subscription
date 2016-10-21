@@ -178,7 +178,7 @@ public function cartComplete(Request $request, $proc){
 	try{
 		$result = $processor->pdt($request->all());
 	}catch(TransactionException $exception){
-		Log::error($exception->getMessage(), $exception->getData());	
+		Log::error($exception->getMessage());	
 	}
 	
 	if(!empty($result)){
@@ -202,7 +202,7 @@ public function handleIpn(Request $request, $proc){
 	  	$result = $processor->ipn($request->all());
 	}catch(Userdesk\Subscription\Exceptions\TransactionException $exception){
 	  	//Handle Exceptions
-	  	Log::error($exception->getMessage(), $exception->getData());  
+	  	Log::error($exception->getMessage());  
 	}
 
 	if(!empty($result)){

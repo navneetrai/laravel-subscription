@@ -117,16 +117,22 @@ class Paypal implements ProcessorContract{
 	public function pdt(array $input){
 		$req		 = 'cmd=_notify-synch';
 		$tx_token	 = array_get($input, 'tx');
-		$auth_token  = array_get($this->config, 'auth');#'AHzOaZtWjQ7yNtBokHmpmrVfnpahZtiD3pr5HeKAiw9a_wxzPON14erlCDe';#
+		$auth_token  = array_get($this->config, 'auth');
+		
+		if(empty($auth_token)){
+			throw new TransactionException('Invalid Paypal Auth Token');
+		}
+
 		$req		.= "&tx=$tx_token&at=$auth_token";
 
 		$header  = "POST /cgi-bin/webscr HTTP/1.0\r\n";
 		$header .= "Content-Type: application/x-www-form-urlencoded\r\n";
 		$header .= "Content-Length: ".strlen ($req)."\r\n\r\n";
 		$fp		 = fsockopen ('www.paypal.com', 80, $errno, $errstr, 30);
+
 		  
 		if (!$fp) {
-			throw new TransactionException('Cannot Connect to Paypal', ['data'=>$input]);
+			throw new TransactionException('Cannot Connect to Paypal');
 		} else {
 			fputs ($fp, $header.$req);
 			$res = '';
@@ -148,7 +154,7 @@ class Paypal implements ProcessorContract{
 
 			$keys = collect([]);					
 								
-			if (strcmp ($lines[0], "SUCCESS") == 0) {					 
+			if (strcmp ($lines[0], "SUCCESS") == 0) {				 
 				for ($i = 1; $i < count ($lines); $i++) {
 					@list ($key, $val) = explode ("=", $lines[$i]);
 					$keys->put(urldecode($key), urldecode ($val));
@@ -169,9 +175,9 @@ class Paypal implements ProcessorContract{
 					$action = 'signup';					
 				}
 
-				return new TransactionResult($item_number, $subscr_id, 0, $payment_status, $action, $keys->get());		
+				return new TransactionResult($item_number, $subscr_id, 0, $payment_status, $action, $keys->get());
 			} elseif (strcmp ($lines[0], "FAIL") == 0) {	
-				throw new TransactionException("Paypal check failed", ['lines'=>$lines, 'keys'=>$keys]);
+				throw new TransactionException("Paypal check failed");
 			}
 		}		
 	}
