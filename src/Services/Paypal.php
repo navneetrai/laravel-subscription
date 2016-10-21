@@ -105,7 +105,7 @@ class Paypal implements ProcessorContract{
 			return new TransactionResult($item_number, $txn_id, $amount, $status, $action, $input);
 		}
 
-		throw new TransactionException('Item Number Not Found for Paypal IPN', ['data'=>$input]);
+		throw new TransactionException('Item Number Not Found for Paypal IPN');
 	}
 
 	/**

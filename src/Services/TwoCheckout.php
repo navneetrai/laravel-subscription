@@ -94,7 +94,7 @@ class TwoCheckout implements ProcessorContract{
 			return new TransactionResult($item_number, $txn_id, $amount, $txn_type, $action, $input);
 		}
 
-		throw new TransactionException('Cart Not Found for 2Checkout IPN', ['data'=>$input]);
+		throw new TransactionException('Cart Not Found for 2Checkout IPN');
 	}
 
 	/**

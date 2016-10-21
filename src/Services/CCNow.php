@@ -92,7 +92,7 @@ class CCNow implements ProcessorContract{
 			return new TransactionResult($item_number, $txn_id, $amount, $status, $action, $input);
 		}
 
-		throw new TransactionException('Cart Not Found for CCNow IPN', ['data'=>$input]);
+		throw new TransactionException('Cart Not Found for CCNow IPN');
 	}
 
 	/**
