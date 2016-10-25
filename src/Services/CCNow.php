@@ -106,7 +106,7 @@ class CCNow implements ProcessorContract{
 		$subscr_id   = array_get($input, 'order_id');
 		$payment_amount	 = array_get($input, 'amount');
 
-		return new TransactionResult($item_number, $subscr_id, $payment_amount, 'Pass', 'signup', $input);
+		return new TransactionResult($item_number, $subscr_id, $payment_amount, 'signup', 'signup', $input);
 	}
 
 	/**

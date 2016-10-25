@@ -230,3 +230,5 @@ public function handleIpn(Request $request, $proc){
 	}   
 }
 ```
+
+**It is important to remember that IPN notifications are generally delivered via POST. So, you should add post method and remove csrf check for any route handling ipn notifications.**
