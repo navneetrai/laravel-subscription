@@ -72,8 +72,11 @@ class CCNow implements ProcessorContract{
 	 */
 	public function ipn(array $input){
 		$item_number    = array_get($input, 'x_invoice_num');
+		if(empty($item_number)){
+			$item_number    = array_get($input, 'x_product_sku_1');
+		}
 		if(!empty($item_number)){			
-			$txn_id         = str_random(12);
+			$txn_id         = array_get($input, 'x_orderid');
 			$subscr_id      = array_get($input, 'x_orderid');
 			$amount         = array_get($input, 'x_amount_usd', array_get($input, 'x_amount'));
 			$status     = array_get($input, 'x_status');			
