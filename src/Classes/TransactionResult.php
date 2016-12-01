@@ -10,14 +10,14 @@ class TransactionResult {
 	protected $data;
 
 	/**
-     * @param int $id
+     * @param string $id
      * @param string $ident
      * @param float $amount
      * @param string $status
      * @param string $action payment|refund|cancel|signup|fail|demo
      * @param array $data
      */
-	public function __construct(int $id, string $ident, float $amount, string $status, string $action, array $data){
+	public function __construct(string $id, string $ident, float $amount, string $status, string $action, array $data){
 		$this->id = $id;
 		$this->ident = $ident;
 		$this->amount = $amount;
@@ -29,7 +29,7 @@ class TransactionResult {
 	/**
      * Get Transaction Result Id. Should be same as id sent to complete function
      *
-     * @return int
+     * @return string
      */
 	public function getId(){
 		return $this->id;
