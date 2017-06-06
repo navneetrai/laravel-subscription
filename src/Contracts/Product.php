@@ -2,63 +2,70 @@
 
 interface Product{
 	/**
-     * Create Product Title.
+     * Get Product Title.
      *
      * @return string
      */
 	public function getTitle();
 
 	/**
-     * Create Product Description.
+     * Get Product Description.
      *
      * @return string
      */
 	public function getDescription();
 
 	/**
-     * Create Product Recurrence Frequency.
+     * Get Product Recurrence Frequency.
      *
      * @return string
      */
 	public function getFrequency();
 
 	/**
-     * Create Product Recurrence Type.
+     * Get Product Recurrence Type.
      *
      * @return string
      */
 	public function getRecurrence();
 
 	/**
-     * Create Product Price.
+     * Get Product Price.
      *
      * @return float
      */
 	public function getPrice();
 
 	/**
-     * Create Product Discount.
+     * Get Product Discount.
      *
      * @return float
      */
 	public function getDiscount();
 
+     /**
+     * Get Product First Price.
+     *
+     * @return float
+     */
+     public function getFirstPrice();
+
 	/**
-     * Create Product Country Code.
+     * Get Product Country Code.
      *
      * @return string
      */
 	public function getIpnUrl();
 
 	/**
-     * Create Product Email Id.
+     * Get Product Email Id.
      *
      * @return string
      */
 	public function getReturnUrl();
 
 	/**
-     * Create Product Phone number.
+     * Get Product Phone number.
      *
      * @return string
      */

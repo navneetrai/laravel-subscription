@@ -43,6 +43,26 @@ class SubscriptionConsumer implements SubscriptionConsumerContract {
 		return $this->name;
 	}
 
+
+    /**
+     * Create Consumer's Name.
+     *
+     * @return string
+     */
+    public function getFirstName(){
+        return $this->splitName()[0];
+    }
+
+
+    /**
+     * Create Consumer's Name.
+     *
+     * @return string
+     */
+    public function getLastName(){
+        return $this->splitName()[1];
+    }
+
 	/**
      * Create Consumer's Address.
      *
@@ -105,4 +125,11 @@ class SubscriptionConsumer implements SubscriptionConsumerContract {
 	public function getPhone(){
 		return $this->phone;
 	}
+
+	private function splitName() {
+        $name = trim($this->name);
+        $last_name = (strpos($name, ' ') === false) ? '' : preg_replace('#.*\s([\w-]*)$#', '$1', $name);
+        $first_name = trim( preg_replace('#'.$last_name.'#', '', $name ) );
+        return array($first_name, $last_name);
+    }
 }

@@ -52,7 +52,7 @@ class Paypal implements ProcessorContract{
 
 			if($product->getDiscount() > 0){
 				$params = array_merge($params, [
-					'a1'=>sprintf("%.02d", $product->getPrice() - $product->getDiscount()), 
+					'a1'=>$product->getFirstPrice(), 
 					'p1'=>$product->getFrequency(), 
 					't1'=>$recur
 				]);

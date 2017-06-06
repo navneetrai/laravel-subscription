@@ -30,6 +30,14 @@ return [
 			'logo'=>'',
 			'auth'=>''
 		],
+
+		'payfast'=>[
+			'merchant_id'=>'', 
+			'merchant_key'=>'',
+			'passphrase'=>'',
+			'auth_token'=>'',
+			'sandbox'=>0
+		],
 	]
 
 ];

@@ -38,7 +38,7 @@ class SubscriptionProduct implements SubscriptionProductContract {
 	}
 
 	/**
-     * Create Product Title.
+     * Get Product Title.
      *
      * @return string
      */
@@ -47,7 +47,7 @@ class SubscriptionProduct implements SubscriptionProductContract {
 	}
 
 	/**
-     * Create Product Description.
+     * Get Product Description.
      *
      * @return string
      */
@@ -65,7 +65,7 @@ class SubscriptionProduct implements SubscriptionProductContract {
 	}
 
 	/**
-     * Create Product Recurrence Type.
+     * Get Product Recurrence Type.
      *
      * @return string 'year'|'month'|'day'|'none'
      */
@@ -74,7 +74,7 @@ class SubscriptionProduct implements SubscriptionProductContract {
 	}
 
 	/**
-     * Create Product Price.
+     * Get Product Price.
      *
      * @return float
      */
@@ -83,7 +83,7 @@ class SubscriptionProduct implements SubscriptionProductContract {
 	}
 
 	/**
-     * Create Product Discount.
+     * Get Product Discount.
      *
      * @return float
      */
@@ -92,7 +92,16 @@ class SubscriptionProduct implements SubscriptionProductContract {
 	}
 
 	/**
-     * Create Product Country Code.
+     * Get Product First Price.
+     *
+     * @return float
+     */
+	public function getFirstPrice(){
+		return ($this->getDiscount() > 0)?(sprintf("%.02d", $this->getPrice() - $this->getDiscount())):$this->getPrice();
+	}
+
+	/**
+     * Get Product IPN Url.
      *
      * @return string
      */
@@ -101,7 +110,7 @@ class SubscriptionProduct implements SubscriptionProductContract {
 	}
 
 	/**
-     * Create Product Email Id.
+     * Get Product Return Url.
      *
      * @return string
      */
@@ -110,7 +119,7 @@ class SubscriptionProduct implements SubscriptionProductContract {
 	}
 
 	/**
-     * Create Product Phone number.
+     * Get Product Cancel Url.
      *
      * @return string
      */
