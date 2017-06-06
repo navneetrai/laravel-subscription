@@ -21,12 +21,13 @@ If you want to handle non-recurring payments, you can use [Omnipay](http://omnip
 
 ## Supported services
 
-The library supports [Paypal](https://www.paypal.com) and credit card processors [2Checkout](https://www.2checkout.com/) and [CCNow](http://www.ccnow.com/). More services will be implemented soon.
+The library supports [Paypal](https://www.paypal.com) and credit card processors [2Checkout](https://www.2checkout.com/), [PayFast](https://www.payfast.co.za) and [CCNow](http://www.ccnow.com/). More services will be implemented soon.
 
 Included service implementations:
 
  - Paypal
  - 2Checkout
+ - PayFast
  - CCNow
 - more to come!
 
@@ -102,7 +103,7 @@ return [
   |--------------------------------------------------------------------------
   |
   | This file is for storing the credentials for subscription services such
-  | as Paypal, CCNow, 2Checkout, and others. This file provides a sane
+  | as Paypal, CCNow, PayFast, 2Checkout, and others. This file provides a sane
   | default location for this type of information, allowing packages
   | to have a conventional place to find your various credentials.
   |

@@ -8,7 +8,7 @@ return [
 	|--------------------------------------------------------------------------
 	|
 	| This file is for storing the credentials for subscription services such
-	| as Paypal, CCNow, 2Checkout, and others. This file provides a sane
+	| as Paypal, CCNow, PayFast, 2Checkout, and others. This file provides a sane
 	| default location for this type of information, allowing packages
 	| to have a conventional place to find your various credentials.
 	|
