@@ -15,7 +15,7 @@ class SubscriptionFactoryTest extends \Orchestra\Testbench\TestCase
      * @covers Userdesk\Subscription\SubscriptionFactory::createService
      */
     public function testCreateServiceThrowsExceptionIfNoConfig(){
-    	$this->setExpectedException('\\Userdesk\Subscription\Exceptions\SubscriptionException');
+    	$this->expectException('\\Userdesk\Subscription\Exceptions\SubscriptionException');
 		$factory = new SubscriptionFactory();
         $service = $factory->createService('paypal');
     }
@@ -52,7 +52,7 @@ class SubscriptionFactoryTest extends \Orchestra\Testbench\TestCase
      * @covers Userdesk\Subscription\SubscriptionFactory::registerService
      */
     public function testRegisterServiceThrowsExceptionIfNonExistentClass(){
-    	$this->setExpectedException('\\Userdesk\Subscription\Exceptions\SubscriptionException');
+    	$this->expectException('\\Userdesk\Subscription\Exceptions\SubscriptionException');
 		$factory = new SubscriptionFactory();
         $factory->registerService('foo', 'bar');
     }
@@ -61,7 +61,7 @@ class SubscriptionFactoryTest extends \Orchestra\Testbench\TestCase
      * @covers Userdesk\Subscription\SubscriptionFactory::registerService
      */
     public function testRegisterServiceThrowsExceptionIfClassNotFulfillsContract(){
-    	$this->setExpectedException('\\Userdesk\Subscription\Exceptions\SubscriptionException');
+    	$this->expectException('\\Userdesk\Subscription\Exceptions\SubscriptionException');
 		$factory = new SubscriptionFactory();
         $factory->registerService('foo', 'Userdesk\\Subscription\\SubscriptionFactory');
     }
